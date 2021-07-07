@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+#apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: juice-ingress
+  namespace: juice
+  labels:
+    app.kubernetes.io/name: nginx-config
+spec:
+  rules:
+  - host: juice.cloudguard.cf
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: juice-service
+          servicePort: 8080
